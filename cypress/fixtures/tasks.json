@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Task 1",
+    "description": "Description for Task 1",
+    "assignee": "Alice",
+    "status": "To Do"
+  },
+  {
+    "title": "Task 2",
+    "description": "Description for Task 2",
+    "assignee": "Bob",
+    "status": "In Progress"
+  },
+  {
+    "title": "Task 3",
+    "description": "Description for Task 3",
+    "assignee": "Charlie",
+    "status": "Done"
+  }
+]

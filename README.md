@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Basic todo app
+
+This project is designed to [briefly describe what your project does].
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, follow these steps:
+
+### Installation
+
+First, you need to install the necessary dependencies. Run the following command in your terminal:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+### Building the Project
+
+After installing the dependencies, build the project using the following command:
+
+```bash
+npm run build
+```
+
+### Starting the Development Server
+
+To start the development server, use the following command:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will launch the project on your local server.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing the Task JSON File
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To edit the task JSON file, visit the `public` folder in your project directory.
 
-## Learn More
+# Important Note !!!
 
-To learn more about Next.js, take a look at the following resources:
+**Warning:** Do not forget to visit the E2E integration test. You can run the test using the following command:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run cypress:open
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This will open Cypress for end-to-end testing.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Warning:** please use 3000 port for the project. If you want to use another port, you need to change the port in the e2e test file.
