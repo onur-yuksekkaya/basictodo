@@ -1,6 +1,5 @@
 # Basic todo app
 
-This project is designed to.
 
 you don't have to test, it's testing itself
 
