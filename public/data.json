@@ -34,11 +34,5 @@
     "description": "See if you can take care of some of the rat problem while you're down here.",
     "status": "Done",
     "assignee": "Gary Crane"
-  },
-  {
-    "title": "New Task Test",
-    "description": "New Task Description",
-    "status": "Done",
-    "assignee": "John Doe"
   }
 ]
