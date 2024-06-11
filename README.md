@@ -3,8 +3,10 @@
 This project is designed to.
 
 you don't have to test, it's testing itself
-![gif](https://github.com/onur-yuksekkaya/basictodo/assets/51006791/5de0105f-bbe6-45c5-9843-42556b411f2b)
 
+<br/>
+![gif](https://github.com/onur-yuksekkaya/basictodo/assets/51006791/5de0105f-bbe6-45c5-9843-42556b411f2b)
+<br/>
 
 ## Getting Started
 
