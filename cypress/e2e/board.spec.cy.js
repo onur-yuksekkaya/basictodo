@@ -27,6 +27,18 @@ describe('Board Application', () => {
     cy.contains('New Task Test').should('exist');
   });
 
+  it('should fail when you try to add another same item', () => {
+    cy.get('[data-cy=create-task-button]').click();
+    cy.get('[data-cy=modal]').should('be.visible');
+    cy.get('[data-cy=task-title]').type('New Task Test');
+    cy.get('[data-cy=task-description]').type('New Task Description');
+    cy.get('[data-cy=task-assignee]').type('John Doe');
+    cy.get('[data-cy=task-status]').select('To Do');
+    cy.get('[data-cy=save-task]').click();
+    cy.contains('Task already exists').should('exist');
+    cy.get('[data-cy=close-modal]').click();
+  });
+
   it('should drag and drop created new task to the Done section', () => {
     const dataTransfer = new DataTransfer();
 
