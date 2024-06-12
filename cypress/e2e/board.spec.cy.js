@@ -1,6 +1,6 @@
 describe('Board Application', () => {
   before(() => {
-    cy.intercept('GET', `localhost:300/api/tasks`, { fixture: 'tasks.json' }).as('getTasks');
+    cy.intercept('GET', `localhost:3000/api/tasks`, { fixture: 'tasks.json' }).as('getTasks');
   });
 
   beforeEach(() => {

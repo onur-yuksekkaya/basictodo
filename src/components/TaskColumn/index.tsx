@@ -1,5 +1,5 @@
 import { updateTaskStatus } from '@/api';
-import { Task, TaskStatus } from '@/utils/types';
+import { Task, TaskStatus } from '@/types';
 import { useDrop } from 'react-dnd';
 import TaskCard from '../TaskCard';
 
@@ -16,7 +16,10 @@ const TaskColumn = ({ status, tasksByStatus }: { status: TaskStatus; tasksByStat
   });
 
   return (
-    <div ref={dropRef as any} className={`bg-gray-100 mt-4 rounded w-108 ${isOver ? 'bg-blue-100' : ''}`}>
+    <div
+      ref={dropRef as any}
+      className={`bg-gray-100 mt-4 rounded pb-1 md:w-108 ${isOver ? 'bg-gray-100' : 'bg-blue-100'}`}
+    >
       <div className="flex justify-between px-1 text-center items-center">
         <div className="flex px-3 py-1 self-center text-sm font-medium text-gray-800 antialiased rounded-md focus:outline-none hover:bg-blue-100 text-blue-500 focus:bg-blue-100">
           <a href="#" className="">

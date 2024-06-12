@@ -1,6 +1,7 @@
 import { addTask } from '@/api';
-import { TaskStatus } from '@/utils/types';
+import { TaskStatus } from '@/types';
 import { useEffect, useState } from 'react';
+import BaseButton from '../BaseButton';
 
 interface ModalProps {
   isOpen: boolean;
@@ -32,9 +33,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     };
   }, [onClose]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    let valid = true;
+    const newErrors = validateForm();
+    setErrors(newErrors);
+
+    if (isValid(newErrors)) {
+      await submitTask();
+    }
+  };
+
+  const validateForm = () => {
     const newErrors = {
       title: '',
       description: '',
@@ -42,24 +51,27 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       status: '',
     };
 
-    if (!title) {
-      valid = false;
-      newErrors.title = 'Title is required';
-    }
-    if (!description) {
-      valid = false;
-      newErrors.description = 'Description is required';
-    }
-    if (!assignee) {
-      valid = false;
-      newErrors.assignee = 'Assignee is required';
-    }
+    if (!title) newErrors.title = 'Title is required';
+    if (!description) newErrors.description = 'Description is required';
+    if (!assignee) newErrors.assignee = 'Assignee is required';
 
-    setErrors(newErrors);
+    return newErrors;
+  };
 
-    if (valid) {
-      addTask(title, description, status, assignee);
-      onClose();
+  const isValid = (errors: any) => {
+    return !errors.title && !errors.description && !errors.assignee;
+  };
+
+  const submitTask = async () => {
+    try {
+      const response = await addTask({ title, description, status, assignee });
+      if (response?.message === 'Task already exists') {
+        setErrors({ ...errors, title: 'Task already exists' });
+      } else {
+        onClose();
+      }
+    } catch (error: any) {
+      console.error(error);
     }
   };
 
@@ -117,17 +129,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             </select>
           </div>
           <div className="flex justify-end">
-            <button
-              data-cy="close-modal"
-              type="button"
-              className="bg-jiraGray text-jiraBlue rounded-md px-4 py-2"
-              onClick={onClose}
-            >
+            <BaseButton dataCy="close-modal" className="bg-jiraGray text-jiraBlue" onClick={onClose}>
               Cancel
-            </button>
-            <button data-cy="save-task" type="submit" className="bg-jiraGreen text-white rounded-md px-4 py-2 ml-2">
+            </BaseButton>
+            <BaseButton dataCy="save-task" type="submit" className="bg-jiraGreen text-white ml-2">
               Create
-            </button>
+            </BaseButton>
           </div>
         </form>
       </div>
